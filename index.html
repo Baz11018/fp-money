@@ -127,7 +127,7 @@ nav button.active{color:#f7258e!important}
 <main id="settings" class="view">
 <div class="card" style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;margin-bottom:18px">
   <div><div class="muted" style="font-size:11px;letter-spacing:.5px">VERSIONE INSTALLATA</div><div style="font-weight:700;margin-top:3px">FP Money</div></div>
-  <div style="font-weight:750;font-size:15px">v1.5</div>
+  <div style="font-weight:750;font-size:15px">v1.6</div>
 </div>
 <div class="sectionTitle"><b>Impostazioni mensili</b></div><div class="card">
 <div class="field"><label>STIPENDIO MENSILE (€)</label><input id="budgetInput" inputmode="decimal"></div>
@@ -164,7 +164,7 @@ nav button.active{color:#f7258e!important}
 <div class="modal" id="newCatModal"><div class="sheet"><h2>Nuova categoria</h2><div class="field"><label>CATEGORIA NOME</label><input id="newCatName" placeholder="es. Animali"></div><div class="actions"><button class="secondary" onclick="closeModals()">Annulla</button><button class="primary" onclick="addCategory()">Aggiungi categoria</button></div></div></div>
 
 <script>
-const APP_VERSION='1.5';
+const APP_VERSION='1.6';
 const KEY='fp-money-v1-1';
 const baseCategories=['Alimentari','Benzina','Ristoranti','Cibo a domicilio','Svago','Sport','Viaggi','Bollette','Prestiti','Auto','Altro'];
 const palette=['#35B98A','#F0A43A','#F06B59','#E35F91','#8B62E8','#2EA8D1','#4E7AF2','#E0A62F','#A56BD6','#536FF4','#89919F','#E35F91','#5DA56A'];
@@ -224,8 +224,28 @@ let selectedPayment='money';
 function setPayment(p){selectedPayment=p;document.querySelectorAll('[data-payment]').forEach(b=>b.classList.toggle('activePay',b.dataset.payment===p))}
 function currentTx(){let p=periodFor();return data.transactions.filter(x=>{let d=new Date(x.date);return d>=p.start&&d<=p.end})}
 function calc(){let p=periodFor(),n=new Date();n.setHours(0,0,0,0);let days=Math.max(1,Math.floor((p.end-n)/86400000)+1),fixed=data.recurring.reduce((s,x)=>s+Number(x.amount),0),spent=currentTx().filter(x=>(x.payment||'money')==='money').reduce((s,x)=>s+Number(x.amount),0),remaining=Number(data.budget)-Number(data.savingGoal||0)-fixed-spent,daily=remaining/days,tomorrow=days>1?remaining/(days-1):remaining;return{p,days,fixed,spent,remaining,daily,tomorrow,spendable:Number(data.budget)-Number(data.savingGoal||0)-fixed}}
-function recentRowHTML(x){let detail=x.title?`<div class="sub">${esc(x.title)} · ${new Date(x.date).toLocaleDateString('en-GB')}</div>`:`<div class="sub">${new Date(x.date).toLocaleDateString('en-GB')}</div>`;return `<div class="row">${iconBox(x.category)}<div class="grow"><div class="name">${esc(x.category)}</div>${detail}</div><div class="amount">− ${money(x.amount)}</div><button class="link danger deleteExpenseBtn" aria-label="Elimina expense" onclick="deleteExpense('${x.id}')">×</button></div>`}
-function rowHTML(x){let main=x.title?esc(x.title):esc(x.category);let sub=x.title?`${esc(x.category)} · ${new Date(x.date).toLocaleDateString('en-GB')}`:new Date(x.date).toLocaleDateString('en-GB');return `<div class="row">${iconBox(x.category)}<div class="grow"><div class="name">${main}</div><div class="sub">${sub}</div></div><div class="amount">− ${money(x.amount)}</div><button class="link danger deleteExpenseBtn" aria-label="Elimina expense" onclick="deleteExpense('${x.id}')">×</button></div>`}
+
+function render(){
+ ensureBenzinaCredit();
+ let c=calc();
+ dailyValue.textContent=Number(c.daily||0).toLocaleString('it-IT',{minimumFractionDigits:2,maximumFractionDigits:2});
+ tomorrowValue.textContent=money(c.tomorrow);
+ remaining.textContent=money(c.remaining);
+ days.textContent=c.days;
+ periodLabel.textContent=c.p.start.toLocaleDateString('it-IT',{day:'numeric',month:'short'})+' – '+c.p.end.toLocaleDateString('it-IT',{day:'numeric',month:'short',year:'numeric'});
+ if(typeof fpGoal!=='undefined')fpGoal.textContent=money(data.savingGoal);
+ if(typeof fpMeal!=='undefined')fpMeal.textContent=money(data.mealBalance);
+ if(typeof fpFuel!=='undefined')fpFuel.textContent=money(data.fuelBalance);
+ let tx=data.transactions.slice().reverse().slice(0,6);
+ recent.innerHTML=tx.length?tx.map(x=>recentRowHTML(x)).join(''):'<div class="empty">Nessuna spesa ancora</div>';
+ recurringList.innerHTML=data.recurring.length?data.recurring.map((x,i)=>`<div class="row">${iconBox(x.category||'Bollette')}<div class="grow"><div class="name">${esc(x.name)}</div><div class="sub">${esc(x.category||'Bollette')} · Ogni mese</div></div><div class="amount">− ${money(x.amount)}</div><button class="link danger" onclick="delRecurring(${i})">×</button></div>`).join(''):'<div class="empty">Nessuna spesa ricorrente</div>';
+ renderSettingsCategorie();
+ renderStats();
+ renderLog();
+}
+
+function recentRowHTML(x){let detail=x.title?`<div class="sub">${esc(x.title)} · ${new Date(x.date).toLocaleDateString('it-IT')}</div>`:`<div class="sub">${new Date(x.date).toLocaleDateString('it-IT')}</div>`;return `<div class="row">${iconBox(x.category)}<div class="grow"><div class="name">${esc(x.category)}</div>${detail}</div><div class="amount">− ${money(x.amount)}</div><button class="link danger deleteExpenseBtn" aria-label="Elimina spesa" onclick="deleteExpense('${x.id}')">×</button></div>`}
+function rowHTML(x){let main=x.title?esc(x.title):esc(x.category);let sub=x.title?`${esc(x.category)} · ${new Date(x.date).toLocaleDateString('it-IT')}`:new Date(x.date).toLocaleDateString('it-IT');return `<div class="row">${iconBox(x.category)}<div class="grow"><div class="name">${main}</div><div class="sub">${sub}</div></div><div class="amount">− ${money(x.amount)}</div><button class="link danger deleteExpenseBtn" aria-label="Elimina spesa" onclick="deleteExpense('${x.id}')">×</button></div>`}
 function renderPicker(){categoryPicker.innerHTML=data.categories.map(cat=>`<button class="catButton" onclick='chooseCategory(${JSON.stringify(cat)})'>${iconBox(cat)}<span>${esc(cat)}</span></button>`).join('')}
 function openCategoryPicker(){closeModals();renderPicker();categoryModal.style.display='flex'}
 function chooseCategory(cat){selectedCategory=cat;categoryModal.style.display='none';expenseModal.style.display='flex';let c=color(cat);selectedCategoryDisplay.innerHTML=`<div class="row" style="border:0;padding:3px 0 8px">${iconBox(cat)}<div class="grow"><div class="name">${esc(cat)}</div></div></div>`;expenseHeading.textContent='Nuova spesa';setTimeout(()=>expenseTitle.focus(),100)}
@@ -239,14 +259,14 @@ function openNewCategory(){closeModals();newCatModal.style.display='flex';setTim
 function addCategory(){let n=newCatName.value.trim();if(!n)return;if(!data.categories.some(x=>x.toLowerCase()===n.toLowerCase()))data.categories.splice(data.categories.length-1,0,n);newCatName.value='';save();closeModals();render();showView('settings')}
 function deleteCategory(i){let n=data.categories[i];if(n==='Altro'||baseCategories.includes(n))return;if(confirm('Elimina "'+n+'"? Le spese esistenti mantengono la categoria.')){data.categories.splice(i,1);save();render()}}
 function renderSettingsCategorie(){settingsCategorie.innerHTML=data.categories.map((cat,i)=>`<div class="row">${iconBox(cat)}<div class="grow"><div class="name">${esc(cat)}</div></div>${(!baseCategories.includes(cat)&&cat!=='Altro')?`<button class="link danger" onclick="deleteCategory(${i})">Elimina</button>`:''}</div>`).join('')}
-function renderStats(){let c=calc(),tot={};currentTx().forEach(x=>tot[x.category]=(tot[x.category]||0)+Number(x.amount));let es=Object.entries(tot).sort((a,b)=>b[1]-a[1]),total=c.spent;spentTotal.textContent=money(total);spentPct.textContent=(c.spendable>0?(total/c.spendable*100).toFixed(1):0)+'% of available spending used';
+function renderStats(){let c=calc(),tot={};currentTx().forEach(x=>tot[x.category]=(tot[x.category]||0)+Number(x.amount));let es=Object.entries(tot).sort((a,b)=>b[1]-a[1]),total=c.spent;spentTotal.textContent=money(total);spentPct.textContent=(c.spendable>0?(total/c.spendable*100).toFixed(1):0)+'% del budget disponibile utilizzato';
  categoryChart.innerHTML=es.length?es.map(([cat,v])=>{let p=total?v/total*100:0,co=color(cat);return `<div class="barRow"><div class="barHead"><span style="display:flex;align-items:center;gap:7px"><span class="swatch" style="background:${co}"></span>${esc(cat)}</span><span>${money(v)} · ${p.toFixed(1)}%</span></div><div class="barBg"><div class="barFill" style="width:${p}%;background:${co}"></div></div></div>`}).join(''):'<div class="empty">Aggiungi spese per vedere le statistiche</div>';
- categoryBreakdown.innerHTML=es.length?es.map(([cat,v])=>{let p=total?v/total*100:0;return `<div class="row">${iconBox(cat)}<div class="grow"><div class="name">${esc(cat)}</div><div class="sub">${p.toFixed(1)}% of monthly spending</div></div><div class="amount" style="color:${color(cat)}">${money(v)}</div></div>`}).join(''):'<div class="empty">Nessun dato</div>'
+ categoryBreakdown.innerHTML=es.length?es.map(([cat,v])=>{let p=total?v/total*100:0;return `<div class="row">${iconBox(cat)}<div class="grow"><div class="name">${esc(cat)}</div><div class="sub">${p.toFixed(1)}% delle spese mensili</div></div><div class="amount" style="color:${color(cat)}">${money(v)}</div></div>`}).join(''):'<div class="empty">Nessun dato</div>'
 }
 function logPeriod(){let now=new Date(),target=new Date(now.getFullYear(),now.getMonth()+logOffset,15);return periodFor(target)}
-function renderLog(){let p=logPeriod();logMonthTitle.textContent=p.start.toLocaleDateString('en-US',{month:'long',year:'numeric'});let tx=data.transactions.filter(x=>{let d=new Date(x.date);return d>=p.start&&d<=p.end}).sort((a,b)=>new Date(b.date)-new Date(a.date));let spent=tx.reduce((s,x)=>s+Number(x.amount),0),fixed=data.recurring.reduce((s,x)=>s+Number(x.amount),0);logFixed.textContent='− '+money(fixed);logBudget.textContent=money(data.budget);logSpent.textContent='− '+money(spent);
- let groups={};tx.forEach(x=>{let k=new Date(x.date).toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});(groups[k]??=[]).push(x)});
- let fixedBlock=logOffset===0&&data.recurring.length?`<div class="logGroup"><div class="logDate">Costi fissi</div><div class="card">${data.recurring.map(x=>`<div class="row">${iconBox(x.category||'Bollette')}<div class="grow"><div class="name">${esc(x.name)}</div><div class="sub">${esc(x.category||'Bollette')} · recurring</div></div><div class="amount negative">− ${money(x.amount)}</div></div>`).join('')}</div></div>`:'';
+function renderLog(){let p=logPeriod();logMonthTitle.textContent=p.start.toLocaleDateString('it-IT',{month:'long',year:'numeric'});let tx=data.transactions.filter(x=>{let d=new Date(x.date);return d>=p.start&&d<=p.end}).sort((a,b)=>new Date(b.date)-new Date(a.date));let spent=tx.reduce((s,x)=>s+Number(x.amount),0),fixed=data.recurring.reduce((s,x)=>s+Number(x.amount),0);logFixed.textContent='− '+money(fixed);logBudget.textContent=money(data.budget);logSpent.textContent='− '+money(spent);
+ let groups={};tx.forEach(x=>{let k=new Date(x.date).toLocaleDateString('it-IT',{weekday:'short',day:'numeric',month:'short'});(groups[k]??=[]).push(x)});
+ let fixedBlock=logOffset===0&&data.recurring.length?`<div class="logGroup"><div class="logDate">Costi fissi</div><div class="card">${data.recurring.map(x=>`<div class="row">${iconBox(x.category||'Bollette')}<div class="grow"><div class="name">${esc(x.name)}</div><div class="sub">${esc(x.category||'Bollette')} · ricorrente</div></div><div class="amount negative">− ${money(x.amount)}</div></div>`).join('')}</div></div>`:'';
  logEntries.innerHTML=fixedBlock+(tx.length?Object.entries(groups).map(([date,arr])=>`<div class="logGroup"><div class="logDate">${date}</div><div class="card">${arr.map(rowHTML).join('')}</div></div>`).join(''):'<div class="card"><div class="empty">Nessuna spesa in questo periodo</div></div>')
 }
 function shiftLogMonth(n){logOffset+=n;renderLog()}
