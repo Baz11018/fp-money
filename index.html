@@ -106,7 +106,7 @@ nav button.active{color:#f7258e!important}
 <section class="hero"><div class="heroLabel">DISPONIBILE OGGI</div><div class="dailyRow"><div class="daily"><span class="currency">€</span> <span id="dailyValue">0.00</span></div></div>
 <div class="tomorrowWrap"><div class="tomorrowMini"><span>DOMANI</span><b id="tomorrowValue">€ 0</b><small>previsto</small></div></div>
 <div class="statsGrid"><div class="stat"><b id="remaining">€ 0</b><span>rimanenti questo mese</span></div><div class="stat"><b id="days">0</b><span>giorni rimanenti</span></div></div></section>
-<div class="fpMini"><div><div style="font-size:19px;margin-bottom:4px">🎯</div><span>Obiettivo risparmio</span><b id="fpGoal">€ 0,00</b></div><div><div style="font-size:19px;margin-bottom:4px">🍴</div><span>Buoni pasto</span><b id="fpMeal">€ 0,00</b></div><div><div style="font-size:19px;margin-bottom:4px">⛽</div><span>Buoni benzina</span><b id="fpBenzina">€ 0,00</b></div></div>
+<div class="fpMini"><div><div style="font-size:19px;margin-bottom:4px">🎯</div><span>Obiettivo risparmio</span><b id="fpGoal">€ 0,00</b></div><div><div style="font-size:19px;margin-bottom:4px">🍴</div><span>Buoni pasto</span><b id="fpMeal">€ 0,00</b></div><div><div style="font-size:19px;margin-bottom:4px">⛽</div><span>Buoni benzina</span><b id="fpFuel">€ 0,00</b></div></div>
 <button class="add" onclick="openCategoryPicker()">＋ Aggiungi spesa</button>
 <div class="sectionTitle"><b>Spese recenti</b><button class="link" onclick="showView('logView')">Vedi tutte</button></div><div class="card" id="recent"></div>
 <div class="sectionTitle"><b>Spese ricorrenti</b><button class="link" onclick="openRecurring()">＋ Aggiungi</button></div><div class="card" id="recurringList"></div>
@@ -127,7 +127,7 @@ nav button.active{color:#f7258e!important}
 <main id="settings" class="view">
 <div class="card" style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;margin-bottom:18px">
   <div><div class="muted" style="font-size:11px;letter-spacing:.5px">VERSIONE INSTALLATA</div><div style="font-weight:700;margin-top:3px">FP Money</div></div>
-  <div style="font-weight:750;font-size:15px">v2.0</div>
+  <div style="font-weight:750;font-size:15px">v2.1</div>
 </div>
 <div class="sectionTitle"><b>Impostazioni mensili</b></div><div class="card">
 <div class="field"><label>STIPENDIO MENSILE (€)</label><input id="budgetInput" inputmode="decimal"></div>
@@ -164,7 +164,7 @@ nav button.active{color:#f7258e!important}
 <div class="modal" id="newCatModal"><div class="sheet"><h2>Nuova categoria</h2><div class="field"><label>CATEGORIA NOME</label><input id="newCatName" placeholder="es. Animali"></div><div class="actions"><button class="secondary" onclick="closeModals()">Annulla</button><button class="primary" onclick="addCategory()">Aggiungi categoria</button></div></div></div>
 
 <script>
-const APP_VERSION='2.0';
+const APP_VERSION='2.1';
 const KEY='fp-money-v1-1';
 const baseCategories=['Alimentari','Benzina','Ristoranti','Cibo a domicilio','Svago','Sport','Viaggi','Bollette','Prestiti','Auto','Altro'];
 const palette=['#35B98A','#F0A43A','#F06B59','#E35F91','#8B62E8','#2EA8D1','#4E7AF2','#E0A62F','#A56BD6','#536FF4','#89919F','#E35F91','#5DA56A'];
