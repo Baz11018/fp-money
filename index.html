@@ -33,6 +33,60 @@ nav button{border:0;background:none;color:#969aa4;font-size:10.5px;min-width:58p
 .logGroup{margin-bottom:20px}.logDate{font-size:12px;color:var(--muted);font-weight:650;margin:13px 3px 7px;text-transform:uppercase}.summaryLine{display:flex;justify-content:space-between;font-size:14px;margin:7px 0}.positive{color:#24a865}.negative{color:#df5353}
 .chartTitle{font-weight:700;margin-bottom:16px}.bigStat{font-size:34px;font-weight:780;letter-spacing:-1px}.muted{color:var(--muted)}.barRow{margin:15px 0}.barHead{display:flex;justify-content:space-between;gap:10px;font-size:13px;margin-bottom:7px}.barBg{height:12px;background:#eceef2;border-radius:999px;overflow:hidden}.barFill{height:100%;border-radius:999px}.chartFoot{color:var(--muted);font-size:12px;margin-top:8px}
 .categorySetting{display:flex;align-items:center;gap:12px}.swatch{width:10px;height:10px;border-radius:50%}
+
+
+
+/* FP Money v1.3 — approved visual direction */
+:root{
+  --bg:#fff7fa;
+  --card:#ffffff;
+  --text:#151827;
+  --muted:#8b8f9d;
+  --line:#eee8ed;
+  --accent:#f7258e;
+  --accent2:#ffad2f;
+}
+body{background:linear-gradient(180deg,#fff8fb 0%,#fff4f8 100%)}
+.app{padding-left:18px;padding-right:18px}
+header{margin-bottom:20px}
+header h1{letter-spacing:-.5px}
+.hero{
+  background:linear-gradient(135deg,#f20dc5 0%,#ff2d83 48%,#ffb52f 100%)!important;
+  border:0!important;
+  border-radius:28px!important;
+  box-shadow:0 12px 30px rgba(247,37,142,.18)!important;
+}
+.hero,.hero *{color:#fff!important}
+.tomorrowMini{
+  background:rgba(255,255,255,.18)!important;
+  border:1px solid rgba(255,255,255,.55)!important;
+  backdrop-filter:blur(4px)
+}
+.statsGrid .stat{
+  background:rgba(255,255,255,.18)!important;
+  border:1px solid rgba(255,255,255,.55)!important
+}
+.card,.chartCard,.fpMini>div{
+  background:#fff;
+  border:1px solid #eee7ec;
+  box-shadow:0 5px 18px rgba(39,54,74,.055)
+}
+.fpMini{gap:10px;margin-top:14px}
+.fpMini>div{border-radius:19px;padding:14px 13px}
+.fpMini span{font-size:11px;color:#8b8f9d}
+.fpMini b{font-size:18px;margin-top:4px}
+.add{
+  background:linear-gradient(135deg,#f7258e 0%,#ff4f6f 52%,#ffad2f 100%)!important;
+  box-shadow:0 9px 22px rgba(247,37,142,.20)!important;
+  border-radius:18px!important
+}
+nav{background:rgba(255,255,255,.94);border-top:1px solid #eee8ed}
+.navPlus{background:linear-gradient(135deg,#f7258e,#ffad2f)!important}
+nav button.active{color:#f7258e!important}
+.link{color:#f7258e}
+.primary{background:linear-gradient(135deg,#f7258e,#ffad2f)!important}
+.sheet{background:#faf9fc}
+
 </style>
 <style>
 .fpMini{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:8px;margin:11px 0 0}.fpMini>div{background:#fff;border:1px solid #f0e8ee;border-radius:16px;padding:11px 10px}.fpMini span{display:block;font-size:10px;color:#818695}.fpMini b{display:block;font-size:15px;margin-top:3px}.payPick{display:flex;gap:6px;background:#f4eef2;padding:4px;border-radius:13px}.payPick button{flex:1;border:0;background:transparent;padding:10px 4px;border-radius:10px;font-size:11px}.payPick button.activePay{background:linear-gradient(135deg,#f62b92,#ffb12b);color:#fff;font-weight:700}
@@ -45,7 +99,7 @@ nav button{border:0;background:none;color:#969aa4;font-size:10.5px;min-width:58p
 <section class="hero"><div class="heroLabel">DISPONIBILE OGGI</div><div class="dailyRow"><div class="daily"><span class="currency">€</span> <span id="dailyValue">0.00</span></div></div>
 <div class="tomorrowWrap"><div class="tomorrowMini"><span>DOMANI</span><b id="tomorrowValue">€ 0</b><small>previsto</small></div></div>
 <div class="statsGrid"><div class="stat"><b id="remaining">€ 0</b><span>rimanenti questo mese</span></div><div class="stat"><b id="days">0</b><span>giorni rimanenti</span></div></div></section>
-<div class="fpMini"><div><span>Obiettivo risparmio</span><b id="fpGoal">€ 0,00</b></div><div><span>Buoni pasto</span><b id="fpMeal">€ 0,00</b></div><div><span>Buoni benzina</span><b id="fpFuel">€ 0,00</b></div></div>
+<div class="fpMini"><div><div style="font-size:19px;margin-bottom:4px">🎯</div><span>Obiettivo risparmio</span><b id="fpGoal">€ 0,00</b></div><div><div style="font-size:19px;margin-bottom:4px">🍴</div><span>Buoni pasto</span><b id="fpMeal">€ 0,00</b></div><div><div style="font-size:19px;margin-bottom:4px">⛽</div><span>Buoni benzina</span><b id="fpFuel">€ 0,00</b></div></div>
 <button class="add" onclick="openCategoryPicker()">＋ Aggiungi spesa</button>
 <div class="sectionTitle"><b>Spese recenti</b><button class="link" onclick="showView('logView')">Vedi tutte</button></div><div class="card" id="recent"></div>
 <div class="sectionTitle"><b>Spese ricorrenti</b><button class="link" onclick="openRecurring()">＋ Aggiungi</button></div><div class="card" id="recurringList"></div>
@@ -66,7 +120,7 @@ nav button{border:0;background:none;color:#969aa4;font-size:10.5px;min-width:58p
 <main id="settings" class="view">
 <div class="card" style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;margin-bottom:18px">
   <div><div class="muted" style="font-size:11px;letter-spacing:.5px">VERSIONE INSTALLATA</div><div style="font-weight:700;margin-top:3px">FP Money</div></div>
-  <div style="font-weight:750;font-size:15px">v1.1</div>
+  <div style="font-weight:750;font-size:15px">v1.3</div>
 </div>
 <div class="sectionTitle"><b>Impostazioni mensili</b></div><div class="card">
 <div class="field"><label>STIPENDIO MENSILE (€)</label><input id="budgetInput" inputmode="decimal"></div>
@@ -96,21 +150,21 @@ nav button{border:0;background:none;color:#969aa4;font-size:10.5px;min-width:58p
 
 <div class="modal" id="categoryModal"><div class="sheet"><h2>Scegli categoria</h2><div class="categoryGrid" id="categoryPicker"></div><div class="actions"><button class="secondary" onclick="closeModals()">Annulla</button></div></div></div>
 <div class="modal" id="expenseModal"><div class="sheet"><button class="back" onclick="backToCategorie()">‹ Categorie</button><h2 id="expenseHeading">Nuova spesa</h2>
-<div id="selectedCategoryDisplay"></div><div class="field"><label>TITOLO / DESCRIZIONE <span style="font-weight:500;color:#a1a6b2">(FACOLTATIVO)</span></label><input id="expenseTitle" placeholder="e.g. Pizza, Maserati..."></div>
+<div id="selectedCategoryDisplay"></div><div class="field"><label>TITOLO / DESCRIZIONE <span style="font-weight:500;color:#a1a6b2">(FACOLTATIVO)</span></label><input id="expenseTitle" placeholder="es. Pizza, supermercato..."></div>
 <div class="field"><label>IMPORTO (€)</label><input id="expenseAmount" inputmode="decimal" placeholder="0.00"></div>
 <div class="field"><label>PAGATO CON</label><div class="payPick"><button type="button" data-payment="money" class="activePay" onclick="setPayment('money')">Soldi</button><button type="button" data-payment="meal" onclick="setPayment('meal')">Buoni pasto</button><button type="button" data-payment="fuel" onclick="setPayment('fuel')">Buoni benzina</button></div></div><div class="actions"><button class="secondary" onclick="closeModals()">Annulla</button><button class="primary" onclick="addExpense()">Salva spesa</button></div></div></div>
-<div class="modal" id="recModal"><div class="sheet"><h2>Aggiungi spesa ricorrente</h2><div class="field"><label>NOME</label><input id="recName" placeholder="Rent, loan, phone..."></div><div class="field"><label>CATEGORIA</label><select id="recCategory"></select></div><div class="field"><label>IMPORTO (€)</label><input id="recAmount" inputmode="decimal" placeholder="0.00"></div><div class="actions"><button class="secondary" onclick="closeModals()">Annulla</button><button class="primary" onclick="addRecurring()">Aggiungi</button></div></div></div>
-<div class="modal" id="newCatModal"><div class="sheet"><h2>Nuova categoria</h2><div class="field"><label>CATEGORY NOME</label><input id="newCatName" placeholder="e.g. Shopping"></div><div class="actions"><button class="secondary" onclick="closeModals()">Annulla</button><button class="primary" onclick="addCategory()">Aggiungi categoria</button></div></div></div>
+<div class="modal" id="recModal"><div class="sheet"><h2>Aggiungi spesa ricorrente</h2><div class="field"><label>NOME</label><input id="recName" placeholder="Affitto, prestito, telefono..."></div><div class="field"><label>CATEGORIA</label><select id="recCategory"></select></div><div class="field"><label>IMPORTO (€)</label><input id="recAmount" inputmode="decimal" placeholder="0.00"></div><div class="actions"><button class="secondary" onclick="closeModals()">Annulla</button><button class="primary" onclick="addRecurring()">Aggiungi</button></div></div></div>
+<div class="modal" id="newCatModal"><div class="sheet"><h2>Nuova categoria</h2><div class="field"><label>CATEGORY NOME</label><input id="newCatName" placeholder="es. Animali"></div><div class="actions"><button class="secondary" onclick="closeModals()">Annulla</button><button class="primary" onclick="addCategory()">Aggiungi categoria</button></div></div></div>
 
 <script>
-const APP_VERSION='1.1';
+const APP_VERSION='1.3';
 const KEY='fp-money-v1-1';
 const baseCategorie=['Groceries','Fuel','Restaurants','Food Delivery','Entertainment','Sport','Travel','Bills','Loans','Car','Other'];
 const palette=['#35B98A','#F0A43A','#F06B59','#E35F91','#8B62E8','#2EA8D1','#4E7AF2','#E0A62F','#A56BD6','#536FF4','#89919F','#E35F91','#5DA56A'];
 const visuals={
-'Groceries':['cart','#35B98A'],'Fuel':['fuel','#F0A43A'],'Restaurants':['fork','#F06B59'],'Food Delivery':['delivery','#E35F91'],
-'Entertainment':['party','#8B62E8'],'Sport':['sport','#2EA8D1'],'Travel':['plane','#4E7AF2'],'Bills':['receipt','#E0A62F'],
-'Loans':['card','#A56BD6'],'Car':['car','#536FF4'],'Other':['dots','#89919F']
+ 'Alimentari':['cart','#35B98A'],'Benzina':['fuel','#F0A43A'],'Ristoranti':['fork','#F06B59'],'Cibo a domicilio':['delivery','#E35F91'],
+ 'Svago':['party','#8B62E8'],'Sport':['sport','#2EA8D1'],'Viaggi':['plane','#4E7AF2'],'Bollette':['receipt','#E0A62F'],
+ 'Prestiti':['card','#A56BD6'],'Auto':['car','#536FF4'],'Altro':['dots','#89919F']
 };
 let data=JSON.parse(localStorage.getItem(KEY)||'null')||{budget:6000,startDay:1,transactions:[],recurring:[],categories:[...baseCategorie]};
 if(!data.categories)data.categories=[...baseCategorie];
@@ -119,7 +173,7 @@ function txId(){return 'tx_'+Date.now().toString(36)+'_'+Math.random().toString(
 let migratedTxIds=false;
 data.transactions.forEach(x=>{if(!x.id){x.id=txId();migratedTxIds=true}});
 if(migratedTxIds)localStorage.setItem(KEY,JSON.stringify(data));
-let selectedCategory='Other',logOffset=0;
+let selectedCategory='Altro',logOffset=0;
 const money=n=>'€ '+Number(n||0).toLocaleString('it-IT',{minimumFractionDigits:2,maximumFractionDigits:2});
 function save(){localStorage.setItem(KEY,JSON.stringify(data))}
 function esc(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
@@ -169,8 +223,8 @@ function addRecurring(){let a=parseFloat(recAmount.value.replace(',','.')),n=rec
 function delRecurring(i){data.recurring.splice(i,1);save();render()}
 function openNewCategory(){closeModals();newCatModal.style.display='flex';setTimeout(()=>newCatName.focus(),100)}
 function addCategory(){let n=newCatName.value.trim();if(!n)return;if(!data.categories.some(x=>x.toLowerCase()===n.toLowerCase()))data.categories.splice(data.categories.length-1,0,n);newCatName.value='';save();closeModals();render();showView('settings')}
-function deleteCategory(i){let n=data.categories[i];if(n==='Other'||baseCategorie.includes(n))return;if(confirm('Delete "'+n+'"? Existing expenses keep their category.')){data.categories.splice(i,1);save();render()}}
-function renderSettingsCategorie(){settingsCategorie.innerHTML=data.categories.map((cat,i)=>`<div class="row">${iconBox(cat)}<div class="grow"><div class="name">${esc(cat)}</div></div>${(!baseCategorie.includes(cat)&&cat!=='Other')?`<button class="link danger" onclick="deleteCategory(${i})">Delete</button>`:''}</div>`).join('')}
+function deleteCategory(i){let n=data.categories[i];if(n==='Altro'||baseCategorie.includes(n))return;if(confirm('Delete "'+n+'"? Existing expenses keep their category.')){data.categories.splice(i,1);save();render()}}
+function renderSettingsCategorie(){settingsCategorie.innerHTML=data.categories.map((cat,i)=>`<div class="row">${iconBox(cat)}<div class="grow"><div class="name">${esc(cat)}</div></div>${(!baseCategorie.includes(cat)&&cat!=='Altro')?`<button class="link danger" onclick="deleteCategory(${i})">Delete</button>`:''}</div>`).join('')}
 function renderStats(){let c=calc(),tot={};currentTx().forEach(x=>tot[x.category]=(tot[x.category]||0)+Number(x.amount));let es=Object.entries(tot).sort((a,b)=>b[1]-a[1]),total=c.spent;spentTotal.textContent=money(total);spentPct.textContent=(c.spendable>0?(total/c.spendable*100).toFixed(1):0)+'% of available spending used';
  categoryChart.innerHTML=es.length?es.map(([cat,v])=>{let p=total?v/total*100:0,co=color(cat);return `<div class="barRow"><div class="barHead"><span style="display:flex;align-items:center;gap:7px"><span class="swatch" style="background:${co}"></span>${esc(cat)}</span><span>${money(v)} · ${p.toFixed(1)}%</span></div><div class="barBg"><div class="barFill" style="width:${p}%;background:${co}"></div></div></div>`}).join(''):'<div class="empty">Aggiungi spese per vedere le statistiche</div>';
  categoryBreakdown.innerHTML=es.length?es.map(([cat,v])=>{let p=total?v/total*100:0;return `<div class="row">${iconBox(cat)}<div class="grow"><div class="name">${esc(cat)}</div><div class="sub">${p.toFixed(1)}% of monthly spending</div></div><div class="amount" style="color:${color(cat)}">${money(v)}</div></div>`}).join(''):'<div class="empty">Nessun dato</div>'
@@ -178,11 +232,11 @@ function renderStats(){let c=calc(),tot={};currentTx().forEach(x=>tot[x.category
 function logPeriod(){let now=new Date(),target=new Date(now.getFullYear(),now.getMonth()+logOffset,15);return periodFor(target)}
 function renderLog(){let p=logPeriod();logMonthTitle.textContent=p.start.toLocaleDateString('en-US',{month:'long',year:'numeric'});let tx=data.transactions.filter(x=>{let d=new Date(x.date);return d>=p.start&&d<=p.end}).sort((a,b)=>new Date(b.date)-new Date(a.date));let spent=tx.reduce((s,x)=>s+Number(x.amount),0),fixed=data.recurring.reduce((s,x)=>s+Number(x.amount),0);logFixed.textContent='− '+money(fixed);logBudget.textContent=money(data.budget);logSpent.textContent='− '+money(spent);
  let groups={};tx.forEach(x=>{let k=new Date(x.date).toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});(groups[k]??=[]).push(x)});
- let fixedBlock=logOffset===0&&data.recurring.length?`<div class="logGroup"><div class="logDate">Costi fissi</div><div class="card">${data.recurring.map(x=>`<div class="row">${iconBox(x.category||'Bills')}<div class="grow"><div class="name">${esc(x.name)}</div><div class="sub">${esc(x.category||'Bills')} · recurring</div></div><div class="amount negative">− ${money(x.amount)}</div></div>`).join('')}</div></div>`:'';
+ let fixedBlock=logOffset===0&&data.recurring.length?`<div class="logGroup"><div class="logDate">Costi fissi</div><div class="card">${data.recurring.map(x=>`<div class="row">${iconBox(x.category||'Bollette')}<div class="grow"><div class="name">${esc(x.name)}</div><div class="sub">${esc(x.category||'Bollette')} · recurring</div></div><div class="amount negative">− ${money(x.amount)}</div></div>`).join('')}</div></div>`:'';
  logEntries.innerHTML=fixedBlock+(tx.length?Object.entries(groups).map(([date,arr])=>`<div class="logGroup"><div class="logDate">${date}</div><div class="card">${arr.map(rowHTML).join('')}</div></div>`).join(''):'<div class="card"><div class="empty">Nessuna spesa in questo periodo</div></div>')
 }
 function shiftLogMonth(n){logOffset+=n;renderLog()}
-function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));({home:nHome,logView:nLog,statsView:nStats,settings:nSettings}[id]||nHome).classList.add('active');if(id==='settings'){budgetInput.value=data.budget;startDay.value=data.startDay;savingGoalInput.value=data.savingGoal;mealBalanceInput.value=data.mealBalance;fuelMonthlyInput.value=data.fuelMonthly;fuelBalanceInput.value=data.fuelBalance}render()}
+function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));({home:nHome,logView:nLog,statsView:nStats,settings:nSettings}[id]||nHome).classList.add('active');if(id==='settings'){budgetInput.value=data.budget;startDay.value=data.startDay;savingGoalInput.value=data.savingGoal;mealBalanceInput.value=data.mealBalance;fuelMonthlyInput.value=Number(data.fuelMonthly||0);fuelBalanceInput.value=Number(data.fuelBalance||0)}render()}
 function saveSettings(){data.budget=parseFloat(budgetInput.value.replace(',','.'))||0;data.startDay=Number(startDay.value);data.savingGoal=parseFloat(savingGoalInput.value.replace(',','.'))||0;data.mealBalance=parseFloat(mealBalanceInput.value.replace(',','.'))||0;data.fuelMonthly=parseFloat(fuelMonthlyInput.value.replace(',','.'))||0;data.fuelBalance=parseFloat(fuelBalanceInput.value.replace(',','.'))||0;save();showView('home')}
 function closeModals(){document.querySelectorAll('.modal').forEach(x=>x.style.display='none')}
 
@@ -229,7 +283,7 @@ function importBackup(event){
         fuelBalance:Number(incoming.fuelBalance)||0,
         fuelCreditMonth:incoming.fuelCreditMonth||''
       };
-      if(!data.categories.includes('Other'))data.categories.push('Other');
+      if(!data.categories.includes('Altro'))data.categories.push('Altro');
       data.transactions.forEach(x=>{if(!x.id)x.id=txId()});
       save();
       render();
@@ -242,8 +296,8 @@ function importBackup(event){
   };
   reader.readAsText(file);
 }
-function resetData(){if(confirm('Delete all budget data?')){data={budget:0,startDay:1,transactions:[],recurring:[],categories:[...baseCategorie]};save();render();showView('settings')}}
-for(let i=1;i<=28;i++){let o=document.createElement('option');o.value=i;o.textContent=i===1?'1st (calendar month)':i;startDay.appendChild(o)}
+function resetData(){if(confirm('Eliminare tutti i dati?')){data={budget:0,startDay:1,transactions:[],recurring:[],categories:[...baseCategorie]};save();render();showView('settings')}}
+for(let i=1;i<=28;i++){let o=document.createElement('option');o.value=i;o.textContent=i===1?'1° (mese solare)':i;startDay.appendChild(o)}
 render();
 </script>
 </body></html>
