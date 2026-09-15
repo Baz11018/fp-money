@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="FP Money">
 <link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="fp-money-icon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="fp-money-icon-180.png">
 <title>FP Money</title>
 <style>
 :root{--bg:#fff6f9;--card:#fff;--text:#111827;--muted:#818695;--line:#f0e8ee;--accent:#f62b92;--accent2:#ffb12b}
@@ -127,7 +127,7 @@ nav button.active{color:#f7258e!important}
 <main id="settings" class="view">
 <div class="card" style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;margin-bottom:18px">
   <div><div class="muted" style="font-size:11px;letter-spacing:.5px">VERSIONE INSTALLATA</div><div style="font-weight:700;margin-top:3px">FP Money</div></div>
-  <div style="font-weight:750;font-size:15px">v2.1</div>
+  <div style="font-weight:750;font-size:15px">v2.2</div>
 </div>
 <div class="sectionTitle"><b>Impostazioni mensili</b></div><div class="card">
 <div class="field"><label>STIPENDIO MENSILE (€)</label><input id="budgetInput" inputmode="decimal"></div>
@@ -164,14 +164,21 @@ nav button.active{color:#f7258e!important}
 <div class="modal" id="newCatModal"><div class="sheet"><h2>Nuova categoria</h2><div class="field"><label>CATEGORIA NOME</label><input id="newCatName" placeholder="es. Animali"></div><div class="actions"><button class="secondary" onclick="closeModals()">Annulla</button><button class="primary" onclick="addCategory()">Aggiungi categoria</button></div></div></div>
 
 <script>
-const APP_VERSION='2.1';
+const APP_VERSION='2.2';
 const KEY='fp-money-v1-1';
-const baseCategories=['Alimentari','Benzina','Ristoranti','Cibo a domicilio','Svago','Sport','Viaggi','Bollette','Prestiti','Auto','Altro'];
+const baseCategories=['Benzina','Ristoranti','Alimentari','Svago','Viaggi','Bollette','Abbonamenti','Prestiti','Auto','Acquisti online'];
 const palette=['#35B98A','#F0A43A','#F06B59','#E35F91','#8B62E8','#2EA8D1','#4E7AF2','#E0A62F','#A56BD6','#536FF4','#89919F','#E35F91','#5DA56A'];
 const visuals={
-'Alimentari':['cart','#35B98A'],'Benzina':['fuel','#F0A43A'],'Ristoranti':['fork','#F06B59'],'Cibo a domicilio':['delivery','#E35F91'],
-'Svago':['party','#8B62E8'],'Sport':['sport','#2EA8D1'],'Viaggi':['plane','#4E7AF2'],'Bollette':['receipt','#E0A62F'],
-'Prestiti':['card','#A56BD6'],'Auto':['car','#536FF4'],'Altro':['dots','#89919F']
+'Benzina':['fuel','#F0A43A'],
+'Ristoranti':['fork','#F06B59'],
+'Alimentari':['cart','#35B98A'],
+'Svago':['party','#8B62E8'],
+'Viaggi':['plane','#4E7AF2'],
+'Bollette':['receipt','#E0A62F'],
+'Abbonamenti':['streaming','#E5095A'],
+'Prestiti':['card','#A56BD6'],
+'Auto':['car','#536FF4'],
+'Acquisti online':['shopping','#E35F91']
 };
 let data=JSON.parse(localStorage.getItem(KEY)||'null')||{budget:6000,startDay:1,transactions:[],recurring:[],categories:[...baseCategories]};
 if(!data.categories)data.categories=[...baseCategories];
@@ -182,12 +189,12 @@ data.mealBalance=Number.isFinite(Number(data.mealBalance))?Number(data.mealBalan
 
 data.fuelBalance=Number.isFinite(Number(data.fuelBalance))?Number(data.fuelBalance):0;
 if(!data.fuelCreditMonth)data.fuelCreditMonth='';
-baseCategories.forEach(x=>{if(!data.categories.includes(x))data.categories.push(x)});
+data.categories=[...baseCategories];
 function txId(){return 'tx_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,9)}
 let migratedTxIds=false;
 data.transactions.forEach(x=>{if(!x.id){x.id=txId();migratedTxIds=true}});
 if(migratedTxIds)localStorage.setItem(KEY,JSON.stringify(data));
-let selectedCategory='Altro',logOffset=0;
+let selectedCategory='Benzina',logOffset=0;
 const money=n=>'€ '+Number(n||0).toLocaleString('it-IT',{minimumFractionDigits:2,maximumFractionDigits:2});
 function save(){localStorage.setItem(KEY,JSON.stringify(data))}
 function esc(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
@@ -203,6 +210,8 @@ function iconSVG(name){
  plane:`<svg ${a}><path d="M2 16l20-8-7 8v5l-3-3-4 2 1-5z"/></svg>`,
  receipt:`<svg ${a}><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>`,
  card:`<svg ${a}><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg>`,
+ streaming:`<svg ${a}><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3z"/><path d="M8 3h8"/></svg>`,
+ shopping:`<svg ${a}><path d="M5 8h14l-1 13H6z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>`,
  car:`<svg ${a}><path d="M4 15v-3l2-5h12l2 5v3"/><path d="M3 15h18v3H3z"/><circle cx="7" cy="18.5" r="1.2"/><circle cx="17" cy="18.5" r="1.2"/><path d="M6 12h12"/></svg>`,
  dots:`<svg ${a}><circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg>`
  };return I[name]||I.dots
