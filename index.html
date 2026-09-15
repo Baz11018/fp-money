@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#fff5f8">
+<meta name="theme-color" content="#f3f5fb">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="FP Money">
@@ -11,15 +11,15 @@
 <link rel="apple-touch-icon" href="fp-money-icon.svg">
 <title>FP Money</title>
 <style>
-:root{--bg:#fff6f8;--card:#fff;--text:#171827;--muted:#8d8792;--line:#f0e8ed;--accent:#f62b92;--accent2:#ffb12b;--purple:#b92df4}
+:root{--bg:#fff6f9;--card:#fff;--text:#111827;--muted:#818695;--line:#f0e8ee;--accent:#f62b92;--accent2:#ffb12b}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;color:var(--text)}
 .app{max-width:480px;margin:auto;min-height:100vh;padding:calc(18px + env(safe-area-inset-top)) 18px calc(105px + env(safe-area-inset-bottom))}
 header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}h1{font-size:26px;margin:0}.period{font-size:14px;color:var(--muted);margin-top:3px}
 button{font:inherit}.link{border:0;background:none;color:var(--accent);font-size:14px}.danger{color:#d94a4a}
-.hero{background:linear-gradient(135deg,#f323bd 0%,#ff3f7f 48%,#ffb72f 100%);border:0;border-radius:27px;padding:27px 21px;text-align:center;box-shadow:0 12px 30px #f62b9230;color:#fff}
-.heroLabel{font-size:13px;color:#fff;font-weight:700;letter-spacing:.5px}.dailyRow{display:flex;align-items:center;justify-content:center;min-height:66px}.daily{font-size:51px;font-weight:780;letter-spacing:-2px;margin:6px 0}.currency{font-size:21px;letter-spacing:0}.tomorrowWrap{display:flex;justify-content:flex-end;margin-top:8px}.tomorrowMini{display:flex;align-items:center;gap:9px;text-align:left;background:#ffffff55;border:1px solid #ffffff70;border-radius:14px;padding:8px 12px}.tomorrowMini span{font-size:9px;color:#fff;font-weight:700;letter-spacing:.45px}.tomorrowMini b{font-size:13px;color:#fff}.tomorrowMini small{font-size:9px;color:#fff}
-.statsGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.stat{background:#ffffff78;border:1px solid #ffffff80;border-radius:16px;padding:13px}.stat b{display:block;font-size:17px;color:#fff}.stat span{font-size:11px;color:#fff}
-.add{width:100%;border:0;border-radius:17px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:17px;font-size:17px;font-weight:700;margin:16px 0 22px;box-shadow:0 8px 20px #f62b9233}
+.hero{background:linear-gradient(135deg,#f323bd 0%,#ff4b7c 52%,#ffb72f 100%);border:1px solid #ffb4d2;border-radius:27px;padding:29px 21px;text-align:center;box-shadow:0 10px 28px #5868c31a}
+.heroLabel{font-size:13px;color:#fff;font-weight:650;letter-spacing:.5px}.dailyRow{display:flex;align-items:center;justify-content:center;min-height:66px}.daily{font-size:51px;font-weight:780;letter-spacing:-2px;margin:6px 0}.currency{font-size:21px;letter-spacing:0}.tomorrowWrap{display:flex;justify-content:flex-end;margin-top:8px}.tomorrowMini{display:flex;align-items:center;gap:9px;text-align:left;background:#ffffff55;border:1px solid #ffffff70;border-radius:14px;padding:8px 12px}.tomorrowMini span{font-size:9px;color:#70768c;font-weight:700;letter-spacing:.45px}.tomorrowMini b{font-size:13px;color:#3f4664}.tomorrowMini small{font-size:9px;color:#7a8094}
+.statsGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.stat{background:#ffffff78;border:1px solid #ffffff80;border-radius:16px;padding:13px}.stat b{display:block;font-size:17px}.stat span{font-size:11px;color:#70768c}
+.add{width:100%;border:0;border-radius:17px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:17px;font-size:17px;font-weight:700;margin:16px 0 22px;box-shadow:0 8px 20px #f62b9230}
 .sectionTitle{display:flex;justify-content:space-between;align-items:center;margin:19px 2px 10px}.sectionTitle b{font-size:17px}.card,.chartCard{background:#fff;border:1px solid #eceef3;border-radius:21px;box-shadow:0 5px 18px #27364a0b}.card{padding:5px 16px}.chartCard{padding:18px;margin-bottom:14px}
 .row{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}.row:last-child{border:0}.grow{flex:1;min-width:0}.name{font-size:15px;font-weight:520}.sub{font-size:12px;color:var(--muted);margin-top:3px}.amount{font-weight:650;flex:0 0 auto;white-space:nowrap}.deleteExpenseBtn{flex:0 0 30px;width:30px;height:34px;padding:0!important;display:grid!important;place-items:center;font-size:20px!important;line-height:1;color:#d94a4a!important;margin-left:2px}.empty{text-align:center;color:var(--muted);padding:22px 5px}
 .iconBox{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;flex:0 0 42px}.iconBox svg{width:22px;height:22px;stroke:currentColor}
@@ -33,36 +33,27 @@ nav button{border:0;background:none;color:#969aa4;font-size:10.5px;min-width:58p
 .logGroup{margin-bottom:20px}.logDate{font-size:12px;color:var(--muted);font-weight:650;margin:13px 3px 7px;text-transform:uppercase}.summaryLine{display:flex;justify-content:space-between;font-size:14px;margin:7px 0}.positive{color:#24a865}.negative{color:#df5353}
 .chartTitle{font-weight:700;margin-bottom:16px}.bigStat{font-size:34px;font-weight:780;letter-spacing:-1px}.muted{color:var(--muted)}.barRow{margin:15px 0}.barHead{display:flex;justify-content:space-between;gap:10px;font-size:13px;margin-bottom:7px}.barBg{height:12px;background:#eceef2;border-radius:999px;overflow:hidden}.barFill{height:100%;border-radius:999px}.chartFoot{color:var(--muted);font-size:12px;margin-top:8px}
 .categorySetting{display:flex;align-items:center;gap:12px}.swatch{width:10px;height:10px;border-radius:50%}
-
-.fpGoal{margin-top:14px;background:#fff;border:1px solid #f3e5ec;border-radius:20px;padding:15px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 5px 18px #27364a0b}
-.goalIcon{width:45px;height:45px;border-radius:15px;display:grid;place-items:center;font-size:24px;background:#ffedf6;color:#f62b92}
-.goalMain{flex:1}.goalMain small{display:block;color:var(--muted);font-size:11px}.goalMain b{font-size:19px}.goalStatus{font-size:12px;color:#24a865;margin-top:2px}
-.walletGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-.wallet{background:#fff;border:1px solid #f3e5ec;border-radius:18px;padding:13px 14px;box-shadow:0 5px 18px #27364a0b}
-.wallet span{display:block;color:var(--muted);font-size:11px}.wallet b{font-size:18px;display:block;margin-top:3px}.wallet .emoji{font-size:18px;margin-bottom:5px}
-.segment{display:flex;background:#f2edf0;border-radius:13px;padding:3px;gap:3px}.segment button{flex:1;border:0;background:transparent;border-radius:10px;padding:10px 5px;font-size:12px;color:#6f6872}.segment button.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;font-weight:700;box-shadow:0 3px 10px #f62b9225}
-.noteBox{background:#fff8e8;border:1px solid #ffe1a7;border-radius:15px;padding:12px;font-size:12px;color:#7d6433;margin-top:10px}
-
 </style>
-</head>
+<style>
+.fpMini{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:8px;margin:11px 0 0}.fpMini>div{background:#fff;border:1px solid #f0e8ee;border-radius:16px;padding:11px 10px}.fpMini span{display:block;font-size:10px;color:#818695}.fpMini b{display:block;font-size:15px;margin-top:3px}.payPick{display:flex;gap:6px;background:#f4eef2;padding:4px;border-radius:13px}.payPick button{flex:1;border:0;background:transparent;padding:10px 4px;border-radius:10px;font-size:11px}.payPick button.activePay{background:linear-gradient(135deg,#f62b92,#ffb12b);color:#fff;font-weight:700}
+</style></head>
 <body>
 <div class="app">
-<header><div><div style="display:flex;align-items:baseline;gap:7px;flex-wrap:wrap"><h1>FP Money</h1><span style="font-size:13px;font-weight:400;color:#818695">- Il tuo budget quotidiano</span></div><div class="period" id="periodLabel"></div></div><button class="link" onclick="showView('settings')">Impostazioni</button></header>
+<header><div><div style="display:flex;align-items:baseline;gap:7px;flex-wrap:wrap"><h1>FP Money</h1><span style="font-size:13px;font-weight:400;color:#818695">- Budget quotidiano</span></div><div class="period" id="periodLabel"></div></div><button class="link" onclick="showView('settings')">Impostazioni</button></header>
 
 <main id="home" class="view active">
-<section class="hero"><div class="heroLabel">DISPONIBILE OGGI</div><div class="dailyRow"><div class="daily"><span class="currency">AED</span> <span id="dailyValue">0.00</span></div></div>
+<section class="hero"><div class="heroLabel">DISPONIBILE OGGI</div><div class="dailyRow"><div class="daily"><span class="currency">€</span> <span id="dailyValue">0.00</span></div></div>
 <div class="tomorrowWrap"><div class="tomorrowMini"><span>DOMANI</span><b id="tomorrowValue">€ 0</b><small>previsto</small></div></div>
 <div class="statsGrid"><div class="stat"><b id="remaining">€ 0</b><span>rimanenti questo mese</span></div><div class="stat"><b id="days">0</b><span>giorni rimanenti</span></div></div></section>
-<div class="fpGoal"><div class="goalIcon">◎</div><div class="goalMain"><small>OBIETTIVO RISPARMIO</small><b id="goalHome">€ 0,00</b><div class="goalStatus" id="goalStatus">Sei in linea ✓</div></div></div>
-<div class="walletGrid"><div class="wallet"><div class="emoji">🍴</div><span>Buoni pasto</span><b id="mealHome">€ 0,00</b></div><div class="wallet"><div class="emoji">⛽</div><span>Buoni benzina</span><b id="fuelHome">€ 0,00</b></div></div>
-<button class="add"  onclick="openCategoryPicker()">＋ Aggiungi spesa</button>
+<div class="fpMini"><div><span>Obiettivo risparmio</span><b id="fpGoal">€ 0,00</b></div><div><span>Buoni pasto</span><b id="fpMeal">€ 0,00</b></div><div><span>Buoni benzina</span><b id="fpFuel">€ 0,00</b></div></div>
+<button class="add" onclick="openCategoryPicker()">＋ Aggiungi spesa</button>
 <div class="sectionTitle"><b>Spese recenti</b><button class="link" onclick="showView('logView')">Vedi tutte</button></div><div class="card" id="recent"></div>
-<div class="sectionTitle"><b>Spese ricorrenti</b><button class="link" onclick="openRecurring()">＋ Add</button></div><div class="card" id="recurringList"></div>
+<div class="sectionTitle"><b>Spese ricorrenti</b><button class="link" onclick="openRecurring()">＋ Aggiungi</button></div><div class="card" id="recurringList"></div>
 </main>
 
 <main id="logView" class="view">
-<div class="monthNav"><button onclick="shiftRegistroMonth(-1)">‹</button><b id="logMonthTitle"></b><button onclick="shiftRegistroMonth(1)">›</button></div>
-<div class="chartCard"><div class="summaryLine"><span>Costi fissi</span><b class="negative" id="logFixed"></b></div><div class="summaryLine"><span>Budget mensile</span><b class="positive" id="logBudget"></b></div><div class="summaryLine"><span>Spese variabili</span><b id="logSpent"></b></div></div>
+<div class="monthNav"><button onclick="shiftLogMonth(-1)">‹</button><b id="logMonthTitle"></b><button onclick="shiftLogMonth(1)">›</button></div>
+<div class="chartCard"><div class="summaryLine"><span>Costi fissi</span><b class="negative" id="logFixed"></b></div><div class="summaryLine"><span>Stipendio mensile</span><b class="positive" id="logBudget"></b></div><div class="summaryLine"><span>Spese variabili</span><b id="logSpent"></b></div></div>
 <div id="logEntries"></div>
 </main>
 
@@ -75,26 +66,21 @@ nav button{border:0;background:none;color:#969aa4;font-size:10.5px;min-width:58p
 <main id="settings" class="view">
 <div class="card" style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;margin-bottom:18px">
   <div><div class="muted" style="font-size:11px;letter-spacing:.5px">VERSIONE INSTALLATA</div><div style="font-weight:700;margin-top:3px">FP Money</div></div>
-  <div style="font-weight:750;font-size:15px">v1.0</div>
+  <div style="font-weight:750;font-size:15px">v1.1</div>
 </div>
-<div class="sectionTitle"><b>Stipendio e obiettivo</b></div><div class="card">
+<div class="sectionTitle"><b>Impostazioni mensili</b></div><div class="card">
 <div class="field"><label>STIPENDIO MENSILE (€)</label><input id="budgetInput" inputmode="decimal"></div>
-<div class="field"><label>OBIETTIVO RISPARMIO MENSILE (€)</label><input id="savingGoalInput" inputmode="decimal" placeholder="0,00"></div>
 <div class="field"><label>GIORNO INIZIO MESE</label><select id="startDay"></select></div>
-</div>
-<div class="sectionTitle"><b>Buoni e benefit</b></div><div class="card">
-<div class="field"><label>BUONI PASTO DISPONIBILI (€)</label><input id="mealBalanceInput" inputmode="decimal" placeholder="0,00"></div>
-<div class="dataNote">Inserisci il saldo disponibile. I buoni pasto vengono scalati quando li usi.</div>
-<div class="field"><label>BUONI BENZINA MENSILI (€)</label><input id="fuelMonthlyInput" inputmode="decimal" placeholder="0,00"></div>
-<div class="field"><label>SALDO BUONI BENZINA ATTUALE (€)</label><input id="fuelBalanceInput" inputmode="decimal" placeholder="0,00"></div>
-<div class="dataNote">Il saldo benzina si accumula: ciò che non spendi resta disponibile.</div>
-<button class="primary" style="width:100%" onclick="saveSettings()">Salva</button></div>
-<div class="sectionTitle"><b>Categorie</b><button class="link" onclick="openNewCategory()">＋ Aggiungi categoria</button></div><div class="card" id="settingsCategorie"></div>
+<div class="field"><label>OBIETTIVO RISPARMIO (€)</label><input id="savingGoalInput" inputmode="decimal"></div>
+<div class="field"><label>BUONI PASTO DISPONIBILI (€)</label><input id="mealBalanceInput" inputmode="decimal"></div>
+<div class="field"><label>BUONI BENZINA MENSILI (€)</label><input id="fuelMonthlyInput" inputmode="decimal"></div>
+<div class="field"><label>SALDO BUONI BENZINA (€)</label><input id="fuelBalanceInput" inputmode="decimal"></div><button class="primary" style="width:100%" onclick="saveSettings()">Salva</button></div>
+<div class="sectionTitle"><b>Categorie</b><button class="link" onclick="openNewCategory()">＋ Aggiungi category</button></div><div class="card" id="settingsCategorie"></div>
 <div class="sectionTitle"><b>Dati e backup</b></div><div class="card">
 <button class="dataBtn" onclick="exportBackup()">Esporta backup</button>
 <button class="dataBtn" onclick="document.getElementById('backupFile').click()">Importa backup</button>
 <input id="backupFile" type="file" accept=".json,application/json" style="display:none" onchange="importBackup(event)">
-<div class="dataNote">Il backup include stipendio, obiettivo, spese, buoni, costi ricorrenti e categorie.</div>
+<div class="dataNote">Backup includes your budget, expenses, recurring costs and categories.</div>
 <button class="dataBtn danger" onclick="resetData()">Azzera tutti i dati</button>
 </div>
 </main>
@@ -102,33 +88,29 @@ nav button{border:0;background:none;color:#969aa4;font-size:10.5px;min-width:58p
 
 <nav>
 <button id="nHome" class="active" onclick="showView('home')"><div class="navIcon">⌂</div>Home</button>
-<button id="nRegistro" onclick="showView('logView')"><div class="navIcon">▦</div>Registro</button>
+<button id="nLog" onclick="showView('logView')"><div class="navIcon">▦</div>Registro</button>
 <button onclick="openCategoryPicker()"><div class="navPlus">＋</div>Add</button>
-<button id="nStatistiche" onclick="showView('statsView')"><div class="navIcon">◔</div>Statistiche</button>
-<button id="nImpostazioni" onclick="showView('settings')"><div class="navIcon">⚙</div>Impostazioni</button>
+<button id="nStats" onclick="showView('statsView')"><div class="navIcon">◔</div>Statistiche</button>
+<button id="nSettings" onclick="showView('settings')"><div class="navIcon">⚙</div>Impostazioni</button>
 </nav>
 
 <div class="modal" id="categoryModal"><div class="sheet"><h2>Scegli categoria</h2><div class="categoryGrid" id="categoryPicker"></div><div class="actions"><button class="secondary" onclick="closeModals()">Annulla</button></div></div></div>
 <div class="modal" id="expenseModal"><div class="sheet"><button class="back" onclick="backToCategorie()">‹ Categorie</button><h2 id="expenseHeading">Nuova spesa</h2>
-<div id="selectedCategoryDisplay"></div><div class="field"><label>TITOLO / DESCRIZIONE <span style="font-weight:500;color:#a1a6b2">(FACOLTATIVO)</span></label><input id="expenseTitle" placeholder="es. Pizza, spesa..."></div>
+<div id="selectedCategoryDisplay"></div><div class="field"><label>TITOLO / DESCRIZIONE <span style="font-weight:500;color:#a1a6b2">(FACOLTATIVO)</span></label><input id="expenseTitle" placeholder="e.g. Pizza, Maserati..."></div>
 <div class="field"><label>IMPORTO (€)</label><input id="expenseAmount" inputmode="decimal" placeholder="0.00"></div>
-<div class="field"><label>PAGATO CON</label><div class="segment" id="paySegment">
-<button type="button" class="active" data-pay="money" onclick="setPayment('money')">Soldi</button>
-<button type="button" data-pay="meal" onclick="setPayment('meal')">Buoni pasto</button>
-<button type="button" data-pay="fuel" onclick="setPayment('fuel')">Buoni benzina</button>
-</div></div><div class="actions"><button class="secondary" onclick="closeModals()">Annulla</button><button class="primary" onclick="addExpense()">Salva spesa</button></div></div></div>
-<div class="modal" id="recModal"><div class="sheet"><h2>Aggiungi spesa ricorrente</h2><div class="field"><label>NOME</label><input id="recName" placeholder="Affitto, prestito, telefono..."></div><div class="field"><label>CATEGORIA</label><select id="recCategory"></select></div><div class="field"><label>IMPORTO (€)</label><input id="recAmount" inputmode="decimal" placeholder="0.00"></div><div class="actions"><button class="secondary" onclick="closeModals()">Annulla</button><button class="primary" onclick="addRecurring()">Aggiungi mensile</button></div></div></div>
-<div class="modal" id="newCatModal"><div class="sheet"><h2>Nuova categoria</h2><div class="field"><label>CATEGORIA NOME</label><input id="newCatName" placeholder="es. Animali"></div><div class="actions"><button class="secondary" onclick="closeModals()">Annulla</button><button class="primary" onclick="addCategory()">Aggiungi categoria</button></div></div></div>
+<div class="field"><label>PAGATO CON</label><div class="payPick"><button type="button" data-payment="money" class="activePay" onclick="setPayment('money')">Soldi</button><button type="button" data-payment="meal" onclick="setPayment('meal')">Buoni pasto</button><button type="button" data-payment="fuel" onclick="setPayment('fuel')">Buoni benzina</button></div></div><div class="actions"><button class="secondary" onclick="closeModals()">Annulla</button><button class="primary" onclick="addExpense()">Salva spesa</button></div></div></div>
+<div class="modal" id="recModal"><div class="sheet"><h2>Aggiungi spesa ricorrente</h2><div class="field"><label>NOME</label><input id="recName" placeholder="Rent, loan, phone..."></div><div class="field"><label>CATEGORIA</label><select id="recCategory"></select></div><div class="field"><label>IMPORTO (€)</label><input id="recAmount" inputmode="decimal" placeholder="0.00"></div><div class="actions"><button class="secondary" onclick="closeModals()">Annulla</button><button class="primary" onclick="addRecurring()">Aggiungi</button></div></div></div>
+<div class="modal" id="newCatModal"><div class="sheet"><h2>Nuova categoria</h2><div class="field"><label>CATEGORY NOME</label><input id="newCatName" placeholder="e.g. Shopping"></div><div class="actions"><button class="secondary" onclick="closeModals()">Annulla</button><button class="primary" onclick="addCategory()">Aggiungi categoria</button></div></div></div>
 
 <script>
-const APP_VERSION='1.0';
-const KEY='fp-money-v1';
+const APP_VERSION='1.1';
+const KEY='fp-money-v1-1';
 const baseCategorie=['Groceries','Fuel','Restaurants','Food Delivery','Entertainment','Sport','Travel','Bills','Loans','Car','Other'];
 const palette=['#35B98A','#F0A43A','#F06B59','#E35F91','#8B62E8','#2EA8D1','#4E7AF2','#E0A62F','#A56BD6','#536FF4','#89919F','#E35F91','#5DA56A'];
 const visuals={
-'Alimentari':['cart','#8B5CF6'],'Benzina':['fuel','#22C55E'],'Ristoranti':['fork','#F62B92'],'Casa':['dots','#7C3AED'],
-'Shopping':['card','#1687FF'],'Salute':['dots','#EC4899'],'Svago':['party','#FF7A3D'],'Sport':['sport','#FF9F1C'],
-'Viaggi':['plane','#FF4D67'],'Bollette':['receipt','#E0A62F'],'Prestiti':['card','#A56BD6'],'Auto':['car','#536FF4'],'Altro':['dots','#89919F']
+'Groceries':['cart','#35B98A'],'Fuel':['fuel','#F0A43A'],'Restaurants':['fork','#F06B59'],'Food Delivery':['delivery','#E35F91'],
+'Entertainment':['party','#8B62E8'],'Sport':['sport','#2EA8D1'],'Travel':['plane','#4E7AF2'],'Bills':['receipt','#E0A62F'],
+'Loans':['card','#A56BD6'],'Car':['car','#536FF4'],'Other':['dots','#89919F']
 };
 let data=JSON.parse(localStorage.getItem(KEY)||'null')||{budget:6000,startDay:1,transactions:[],recurring:[],categories:[...baseCategorie]};
 if(!data.categories)data.categories=[...baseCategorie];
@@ -167,55 +149,41 @@ function periodFor(date=new Date()){
  else{start=new Date(y,m-1,s);end=new Date(y,m,s-1)}
  start.setHours(0,0,0,0);end.setHours(23,59,59,999);return{start,end}
 }
-function currentTx(){let p=periodFor();return data.transactions.filter(x=>{let d=new Date(x.date);return d>=p.start&&d<=p.end})}
+function fpMonthKey(){let d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')}
+function ensureFuelCredit(){let k=fpMonthKey();if(data.fuelCreditMonth!==k){data.fuelBalance=Number(data.fuelBalance||0)+Number(data.fuelMonthly||0);data.fuelCreditMonth=k;save()}}
+ensureFuelCredit();
 let selectedPayment='money';
-function monthKey(d=new Date()){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')}
-function ensureFuelCredit(){
- const mk=monthKey();
- if(data.fuelLastCredit!==mk){
-   data.fuelBalance=Number(data.fuelBalance||0)+Number(data.fuelMonthly||0);
-   data.fuelLastCredit=mk; save();
- }
-}
-function setPayment(p){
- selectedPayment=p;
- document.querySelectorAll('#paySegment button').forEach(b=>b.classList.toggle('active',b.dataset.pay===p));
-}
+function setPayment(p){selectedPayment=p;document.querySelectorAll('[data-payment]').forEach(b=>b.classList.toggle('activePay',b.dataset.payment===p))}
+function currentTx(){let p=periodFor();return data.transactions.filter(x=>{let d=new Date(x.date);return d>=p.start&&d<=p.end})}
 function calc(){let p=periodFor(),n=new Date();n.setHours(0,0,0,0);let days=Math.max(1,Math.floor((p.end-n)/86400000)+1),fixed=data.recurring.reduce((s,x)=>s+Number(x.amount),0),spent=currentTx().filter(x=>(x.payment||'money')==='money').reduce((s,x)=>s+Number(x.amount),0),remaining=Number(data.budget)-Number(data.savingGoal||0)-fixed-spent,daily=remaining/days,tomorrow=days>1?remaining/(days-1):remaining;return{p,days,fixed,spent,remaining,daily,tomorrow,spendable:Number(data.budget)-Number(data.savingGoal||0)-fixed}}
-function paymentLabel(x){return x.payment==='meal'?' · buono pasto':x.payment==='fuel'?' · buono benzina':''}
-function recentRowHTML(x){let detail=x.title?`<div class="sub">${esc(x.title)} · ${new Date(x.date).toLocaleDateString('it-IT')}${paymentLabel(x)}</div>`:`<div class="sub">${new Date(x.date).toLocaleDateString('it-IT')+paymentLabel(x)+'</div>`;return `<div class="row">${iconBox(x.category)}<div class="grow"><div class="name">${esc(x.category)}</div>${detail}</div><div class="amount">− ${money(x.amount)}</div><button class="link danger deleteExpenseBtn" aria-label="Eliminare expense" onclick="deleteExpense('${x.id}')">×</button></div>`}
-function rowHTML(x){let main=x.title?esc(x.title):esc(x.category);let sub=x.title?`${esc(x.category)} · ${new Date(x.date).toLocaleDateString('it-IT')}`:new Date(x.date).toLocaleDateString('it-IT');return `<div class="row">${iconBox(x.category)}<div class="grow"><div class="name">${main}</div><div class="sub">${sub}</div></div><div class="amount">− ${money(x.amount)}</div><button class="link danger deleteExpenseBtn" aria-label="Eliminare expense" onclick="deleteExpense('${x.id}')">×</button></div>`}
+function recentRowHTML(x){let detail=x.title?`<div class="sub">${esc(x.title)} · ${new Date(x.date).toLocaleDateString('en-GB')}</div>`:`<div class="sub">${new Date(x.date).toLocaleDateString('en-GB')}</div>`;return `<div class="row">${iconBox(x.category)}<div class="grow"><div class="name">${esc(x.category)}</div>${detail}</div><div class="amount">− ${money(x.amount)}</div><button class="link danger deleteExpenseBtn" aria-label="Delete expense" onclick="deleteExpense('${x.id}')">×</button></div>`}
+function rowHTML(x){let main=x.title?esc(x.title):esc(x.category);let sub=x.title?`${esc(x.category)} · ${new Date(x.date).toLocaleDateString('en-GB')}`:new Date(x.date).toLocaleDateString('en-GB');return `<div class="row">${iconBox(x.category)}<div class="grow"><div class="name">${main}</div><div class="sub">${sub}</div></div><div class="amount">− ${money(x.amount)}</div><button class="link danger deleteExpenseBtn" aria-label="Delete expense" onclick="deleteExpense('${x.id}')">×</button></div>`}
 function renderPicker(){categoryPicker.innerHTML=data.categories.map(cat=>`<button class="catButton" onclick='chooseCategory(${JSON.stringify(cat)})'>${iconBox(cat)}<span>${esc(cat)}</span></button>`).join('')}
 function openCategoryPicker(){closeModals();renderPicker();categoryModal.style.display='flex'}
 function chooseCategory(cat){selectedCategory=cat;categoryModal.style.display='none';expenseModal.style.display='flex';let c=color(cat);selectedCategoryDisplay.innerHTML=`<div class="row" style="border:0;padding:3px 0 8px">${iconBox(cat)}<div class="grow"><div class="name">${esc(cat)}</div></div></div>`;expenseHeading.textContent='Nuova spesa';setTimeout(()=>expenseTitle.focus(),100)}
 function backToCategorie(){expenseModal.style.display='none';openCategoryPicker()}
-function addExpense(){let a=parseFloat(expenseAmount.value.replace(',','.')),tt=expenseTitle.value.trim();if(!(a>0))return alert('Inserisci un importo.');
-if(selectedPayment==='meal'&&a>Number(data.mealBalance||0))return alert('Saldo buoni pasto insufficiente.');
-if(selectedPayment==='fuel'&&a>Number(data.fuelBalance||0))return alert('Saldo buoni benzina insufficiente.');
-if(selectedPayment==='meal')data.mealBalance=Number(data.mealBalance||0)-a;
-if(selectedPayment==='fuel')data.fuelBalance=Number(data.fuelBalance||0)-a;
-data.transactions.push({id:txId(),amount:a,category:selectedCategory,title:tt,date:new Date().toISOString(),payment:selectedPayment});save();expenseAmount.value='';expenseTitle.value='';setPayment('money');closeModals();render();showView('home')}
+function addExpense(){let a=parseFloat(expenseAmount.value.replace(',','.')),tt=expenseTitle.value.trim();if(!(a>0))return alert('Inserisci un importo.');if(selectedPayment==='meal'&&a>Number(data.mealBalance||0))return alert('Buoni pasto insufficienti.');if(selectedPayment==='fuel'&&a>Number(data.fuelBalance||0))return alert('Buoni benzina insufficienti.');if(selectedPayment==='meal')data.mealBalance-=a;if(selectedPayment==='fuel')data.fuelBalance-=a;data.transactions.push({id:txId(),amount:a,category:selectedCategory,title:tt,date:new Date().toISOString(),payment:selectedPayment});save();expenseAmount.value='';expenseTitle.value='';setPayment('money');closeModals();render();showView('home')}
 function deleteExpense(id){let x=data.transactions.find(t=>t.id===id);if(!x)return;if(confirm('Eliminare questa spesa?')){if(x.payment==='meal')data.mealBalance=Number(data.mealBalance||0)+Number(x.amount);if(x.payment==='fuel')data.fuelBalance=Number(data.fuelBalance||0)+Number(x.amount);data.transactions=data.transactions.filter(t=>t.id!==id);save();render()}}
 function openRecurring(){closeModals();recCategory.innerHTML=data.categories.map(x=>`<option>${esc(x)}</option>`).join('');recModal.style.display='flex'}
 function addRecurring(){let a=parseFloat(recAmount.value.replace(',','.')),n=recName.value.trim();if(!(a>0)||!n)return;data.recurring.push({name:n,amount:a,category:recCategory.value});save();recName.value='';recAmount.value='';closeModals();render()}
 function delRecurring(i){data.recurring.splice(i,1);save();render()}
 function openNewCategory(){closeModals();newCatModal.style.display='flex';setTimeout(()=>newCatName.focus(),100)}
 function addCategory(){let n=newCatName.value.trim();if(!n)return;if(!data.categories.some(x=>x.toLowerCase()===n.toLowerCase()))data.categories.splice(data.categories.length-1,0,n);newCatName.value='';save();closeModals();render();showView('settings')}
-function deleteCategory(i){let n=data.categories[i];if(n==='Other'||baseCategorie.includes(n))return;if(confirm('Eliminare "'+n+'"? Le spese esistenti mantengono la categoria.')){data.categories.splice(i,1);save();render()}}
-function renderImpostazioniCategorie(){settingsCategorie.innerHTML=data.categories.map((cat,i)=>`<div class="row">${iconBox(cat)}<div class="grow"><div class="name">${esc(cat)}</div></div>${(!baseCategorie.includes(cat)&&cat!=='Other')?`<button class="link danger" onclick="deleteCategory(${i})">Delete</button>`:''}</div>`).join('')}
-function renderStatistiche(){let c=calc(),tot={};currentTx().forEach(x=>tot[x.category]=(tot[x.category]||0)+Number(x.amount));let es=Object.entries(tot).sort((a,b)=>b[1]-a[1]),total=c.spent;spentTotal.textContent=money(total);spentPct.textContent=(c.spendable>0?(total/c.spendable*100).toFixed(1):0)+'% of available spending used';
- categoryChart.innerHTML=es.length?es.map(([cat,v])=>{let p=total?v/total*100:0,co=color(cat);return `<div class="barRow"><div class="barHead"><span style="display:flex;align-items:center;gap:7px"><span class="swatch" style="background:${co}"></span>${esc(cat)}</span><span>${money(v)} · ${p.toFixed(1)}%</span></div><div class="barBg"><div class="barFill" style="width:${p}%;background:${co}"></div></div></div>`}).join(''):'<div class="empty">Aggiungi spesas to see statistics</div>';
- categoryBreakdown.innerHTML=es.length?es.map(([cat,v])=>{let p=total?v/total*100:0;return `<div class="row">${iconBox(cat)}<div class="grow"><div class="name">${esc(cat)}</div><div class="sub">${p.toFixed(1)}% of monthly spending</div></div><div class="amount" style="color:${color(cat)}">${money(v)}</div></div>`}).join(''):'<div class="empty">Nessun dato di spesa</div>'
+function deleteCategory(i){let n=data.categories[i];if(n==='Other'||baseCategorie.includes(n))return;if(confirm('Delete "'+n+'"? Existing expenses keep their category.')){data.categories.splice(i,1);save();render()}}
+function renderSettingsCategorie(){settingsCategorie.innerHTML=data.categories.map((cat,i)=>`<div class="row">${iconBox(cat)}<div class="grow"><div class="name">${esc(cat)}</div></div>${(!baseCategorie.includes(cat)&&cat!=='Other')?`<button class="link danger" onclick="deleteCategory(${i})">Delete</button>`:''}</div>`).join('')}
+function renderStats(){let c=calc(),tot={};currentTx().forEach(x=>tot[x.category]=(tot[x.category]||0)+Number(x.amount));let es=Object.entries(tot).sort((a,b)=>b[1]-a[1]),total=c.spent;spentTotal.textContent=money(total);spentPct.textContent=(c.spendable>0?(total/c.spendable*100).toFixed(1):0)+'% of available spending used';
+ categoryChart.innerHTML=es.length?es.map(([cat,v])=>{let p=total?v/total*100:0,co=color(cat);return `<div class="barRow"><div class="barHead"><span style="display:flex;align-items:center;gap:7px"><span class="swatch" style="background:${co}"></span>${esc(cat)}</span><span>${money(v)} · ${p.toFixed(1)}%</span></div><div class="barBg"><div class="barFill" style="width:${p}%;background:${co}"></div></div></div>`}).join(''):'<div class="empty">Aggiungi spese per vedere le statistiche</div>';
+ categoryBreakdown.innerHTML=es.length?es.map(([cat,v])=>{let p=total?v/total*100:0;return `<div class="row">${iconBox(cat)}<div class="grow"><div class="name">${esc(cat)}</div><div class="sub">${p.toFixed(1)}% of monthly spending</div></div><div class="amount" style="color:${color(cat)}">${money(v)}</div></div>`}).join(''):'<div class="empty">Nessun dato</div>'
 }
 function logPeriod(){let now=new Date(),target=new Date(now.getFullYear(),now.getMonth()+logOffset,15);return periodFor(target)}
-function renderRegistro(){let p=logPeriod();logMonthTitle.textContent=p.start.toLocaleDateString('it-IT',{month:'long',year:'numeric'});let tx=data.transactions.filter(x=>{let d=new Date(x.date);return d>=p.start&&d<=p.end}).sort((a,b)=>new Date(b.date)-new Date(a.date));let spent=tx.reduce((s,x)=>s+Number(x.amount),0),fixed=data.recurring.reduce((s,x)=>s+Number(x.amount),0);logFixed.textContent='− '+money(fixed);logBudget.textContent=money(data.budget);logSpent.textContent='− '+money(spent);
- let groups={};tx.forEach(x=>{let k=new Date(x.date).toLocaleDateString('it-IT',{weekday:'short',day:'numeric',month:'short'});(groups[k]??=[]).push(x)});
+function renderLog(){let p=logPeriod();logMonthTitle.textContent=p.start.toLocaleDateString('en-US',{month:'long',year:'numeric'});let tx=data.transactions.filter(x=>{let d=new Date(x.date);return d>=p.start&&d<=p.end}).sort((a,b)=>new Date(b.date)-new Date(a.date));let spent=tx.reduce((s,x)=>s+Number(x.amount),0),fixed=data.recurring.reduce((s,x)=>s+Number(x.amount),0);logFixed.textContent='− '+money(fixed);logBudget.textContent=money(data.budget);logSpent.textContent='− '+money(spent);
+ let groups={};tx.forEach(x=>{let k=new Date(x.date).toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});(groups[k]??=[]).push(x)});
  let fixedBlock=logOffset===0&&data.recurring.length?`<div class="logGroup"><div class="logDate">Costi fissi</div><div class="card">${data.recurring.map(x=>`<div class="row">${iconBox(x.category||'Bills')}<div class="grow"><div class="name">${esc(x.name)}</div><div class="sub">${esc(x.category||'Bills')} · recurring</div></div><div class="amount negative">− ${money(x.amount)}</div></div>`).join('')}</div></div>`:'';
  logEntries.innerHTML=fixedBlock+(tx.length?Object.entries(groups).map(([date,arr])=>`<div class="logGroup"><div class="logDate">${date}</div><div class="card">${arr.map(rowHTML).join('')}</div></div>`).join(''):'<div class="card"><div class="empty">Nessuna spesa in questo periodo</div></div>')
 }
-function shiftRegistroMonth(n){logOffset+=n;renderRegistro()}
-function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));({home:nHome,logView:nRegistro,statsView:nStatistiche,settings:nImpostazioni}[id]||nHome).classList.add('active');if(id==='settings'){budgetInput.value=data.budget;savingGoalInput.value=data.savingGoal;mealBalanceInput.value=data.mealBalance;fuelMonthlyInput.value=data.fuelMonthly;fuelBalanceInput.value=data.fuelBalance;startDay.value=data.startDay}render()}
-function saveImpostazioni(){data.budget=parseFloat(budgetInput.value.replace(',','.'))||0;data.startDay=Number(startDay.value);save();showView('home')}
+function shiftLogMonth(n){logOffset+=n;renderLog()}
+function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));({home:nHome,logView:nLog,statsView:nStats,settings:nSettings}[id]||nHome).classList.add('active');if(id==='settings'){budgetInput.value=data.budget;startDay.value=data.startDay;savingGoalInput.value=data.savingGoal;mealBalanceInput.value=data.mealBalance;fuelMonthlyInput.value=data.fuelMonthly;fuelBalanceInput.value=data.fuelBalance}render()}
+function saveSettings(){data.budget=parseFloat(budgetInput.value.replace(',','.'))||0;data.startDay=Number(startDay.value);data.savingGoal=parseFloat(savingGoalInput.value.replace(',','.'))||0;data.mealBalance=parseFloat(mealBalanceInput.value.replace(',','.'))||0;data.fuelMonthly=parseFloat(fuelMonthlyInput.value.replace(',','.'))||0;data.fuelBalance=parseFloat(fuelBalanceInput.value.replace(',','.'))||0;save();showView('home')}
 function closeModals(){document.querySelectorAll('.modal').forEach(x=>x.style.display='none')}
 
 function exportBackup(){
@@ -248,7 +216,7 @@ function importBackup(event){
       if(!incoming||typeof incoming!=='object'||!Array.isArray(incoming.transactions)||!Array.isArray(incoming.recurring)||!Array.isArray(incoming.categories)){
         throw new Error('Invalid backup');
       }
-      if(!confirm('Import this backup? I dati attuali di FP Money su questo dispositivo verranno sostituiti.')){event.target.value='';return;}
+      if(!confirm('Import this backup? I dati attuali di FP Money verranno sostituiti.')){event.target.value='';return;}
       data={
         budget:Number(incoming.budget)||0,
         startDay:Number(incoming.startDay)||1,
@@ -259,7 +227,7 @@ function importBackup(event){
         mealBalance:Number(incoming.mealBalance)||0,
         fuelMonthly:Number(incoming.fuelMonthly)||0,
         fuelBalance:Number(incoming.fuelBalance)||0,
-        fuelLastCredit:incoming.fuelLastCredit||''
+        fuelCreditMonth:incoming.fuelCreditMonth||''
       };
       if(!data.categories.includes('Other'))data.categories.push('Other');
       data.transactions.forEach(x=>{if(!x.id)x.id=txId()});
@@ -274,8 +242,8 @@ function importBackup(event){
   };
   reader.readAsText(file);
 }
-function resetData(){if(confirm('Eliminare tutti i dati?')){data={budget:0,savingGoal:0,startDay:1,transactions:[],recurring:[],categories:[...baseCategories],mealBalance:0,fuelMonthly:0,fuelBalance:0,fuelLastCredit:''};save();render();showView('settings')}}
-for(let i=1;i<=28;i++){let o=document.createElement('option');o.value=i;o.textContent=i===1?'1° (mese solare)':i;startDay.appendChild(o)}
+function resetData(){if(confirm('Delete all budget data?')){data={budget:0,startDay:1,transactions:[],recurring:[],categories:[...baseCategorie]};save();render();showView('settings')}}
+for(let i=1;i<=28;i++){let o=document.createElement('option');o.value=i;o.textContent=i===1?'1st (calendar month)':i;startDay.appendChild(o)}
 render();
 </script>
 </body></html>

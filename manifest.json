@@ -1,16 +1,16 @@
 {
   "name": "FP Money",
   "short_name": "FP Money",
-  "start_url": "./",
+  "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#fff6f8",
+  "background_color": "#fff6f9",
   "theme_color": "#f62b92",
   "icons": [
     {
       "src": "fp-money-icon.svg",
       "sizes": "512x512",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
